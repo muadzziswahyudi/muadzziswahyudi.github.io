@@ -223,17 +223,17 @@ section {
     color: var(--text-color);
 }
 
-.footer-section p a img {
-    width: 24px;   /* Ukuran yang lebih kecil dan proporsional */
-    height: 24px;  /* Pastikan tinggi sama dengan lebar */
-    object-fit: contain; /* Memastikan gambar tidak terdistorsi */
-    vertical-align: middle; /* Memastikan ikon sejajar secara vertikal dengan teks jika ada */
-    margin: 0 5px; /* Sedikit spasi di sekitar ikon */
+/* Aturan baru khusus untuk ikon sosial yang tidak di dalam paragraf */
+.footer-section > a > img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    vertical-align: middle;
     transition: transform 0.3s ease;
 }
 
-.footer-section p a:hover img {
-    transform: scale(1.15); /* Sedikit membesar saat hover, bukan hanya 1.1 */
+.footer-section > a:hover > img {
+    transform: scale(1.15);
 }
 #Copyright {
     text-align: center;
