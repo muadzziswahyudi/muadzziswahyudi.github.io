@@ -189,7 +189,11 @@ section {
 }
 
 .kartu-project img {
-    display: none; /* Menghilangkan gambar di daftar proyek untuk fokus pada teks */
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem; /* Menghilangkan gambar di daftar proyek untuk fokus pada teks */
 }
 
 .kartu-project p {
@@ -224,7 +228,7 @@ section {
 }
 
 /* Aturan baru khusus untuk ikon sosial yang tidak di dalam paragraf */
-.footer-section > a > img {
+.footer-section a img {
     width: 24px;
     height: 24px;
     object-fit: contain;
@@ -232,7 +236,7 @@ section {
     transition: transform 0.3s ease;
 }
 
-.footer-section > a:hover > img {
+.footer-section a:hover img {
     transform: scale(1.15);
 }
 #Copyright {
