@@ -203,47 +203,48 @@ section {
 
 
 /* === PHOTOGRAPHY SECTION === */
-/* === PHOTOGRAPHY SECTION === */
 .photo-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1rem;
     margin-top: 40px;
-    /* Tambahkan ini agar elemen di dalamnya bisa menggunakan z-index dengan benar */
-    position: relative; 
 }
 
 .photo-item {
     display: block;
-    overflow: visible; /* Sangat penting: agar gambar yang membesar tidak terpotong */
+    /* Membuat setiap bingkai foto memiliki rasio aspek potret 4:5 */
+    aspect-ratio: 4 / 5; 
+    overflow: hidden; /* Penting untuk memotong gambar awal */
     border-radius: 12px;
     border: 1px solid var(--border-color);
-    position: relative; /* Penting untuk z-index dan posisi gambar */
-    z-index: 1; /* Default z-index */
-    transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0s 0.3s; /* Transisi untuk zoom dan z-index */
+    position: relative; /* Diperlukan agar z-index berfungsi */
+    z-index: 1;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, z-index 0s 0.4s;
+}
+
+.photo-item:hover {
+    z-index: 10; /* Membawa bingkai ke depan saat di-hover */
+    transform: scale(1.25); /* Memperbesar bingkai sebesar 25% */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    border-color: #fff; /* Sembunyikan border saat zoom */
+    transition: transform 0.4s ease, box-shadow 0.4s ease, z-index 0s;
 }
 
 .photo-item img {
     width: 100%;
-    height: 300px;
-    object-fit: cover;
+    height: 100%;
+    /* Awalnya, paksa gambar untuk mengisi bingkai dan terpotong */
+    object-fit: cover; 
     display: block;
-    border-radius: 12px; /* Pastikan gambar punya border-radius juga */
-    transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.photo-item:hover {
-    z-index: 10; /* Membawa foto yang di-hover ke depan */
-    transform: scale(1.1); /* Memperbesar seluruh item */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Memberi bayangan agar menonjol */
-    /* Opsional: Sesuaikan posisi agar zoom lebih terlihat di tengah area */
-    /* Misalnya, transform: scale(1.1) translateY(-10px); */
-    transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0s; /* Hapus delay z-index saat hover */
+    /* Transisi halus untuk perubahan object-fit dan filter */
+    transition: object-fit 0.4s ease, filter 0.4s ease, transform 0.4s ease;
 }
 
 .photo-item:hover img {
-    /* filter: brightness(0.9); Ini bisa dihapus jika tidak lagi diinginkan */
-    transform: none; /* Reset transform img jika sebelumnya ada (dari .photo-item) */
+    /* Saat di-hover, ubah aturan agar gambar muat di dalam bingkai tanpa terpotong */
+    object-fit: contain;
+    background-color: rgba(0, 0, 0, 0.1); /* Latar belakang subtil saat zoom */
+    transform: scale(1.05); /* Sedikit zoom tambahan di dalam bingkai */
 }
 /* === FOOTER === */
 #Contact {
