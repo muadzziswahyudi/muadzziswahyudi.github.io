@@ -203,37 +203,48 @@ section {
 
 
 /* === PHOTOGRAPHY SECTION === */
+/* === PHOTOGRAPHY SECTION === */
 .photo-grid {
     display: grid;
-    /* Membuat 3 kolom di layar lebar, dan 2 kolom di layar yang lebih kecil */
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem; /* Jarak antar foto */
+    gap: 1rem;
     margin-top: 40px;
+    /* Tambahkan ini agar elemen di dalamnya bisa menggunakan z-index dengan benar */
+    position: relative; 
 }
 
 .photo-item {
     display: block;
-    overflow: hidden; /* Penting untuk efek zoom */
+    overflow: visible; /* Sangat penting: agar gambar yang membesar tidak terpotong */
     border-radius: 12px;
     border: 1px solid var(--border-color);
+    position: relative; /* Penting untuk z-index dan posisi gambar */
+    z-index: 1; /* Default z-index */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0s 0.3s; /* Transisi untuk zoom dan z-index */
 }
 
 .photo-item img {
     width: 100%;
-    height: 300px; /* Samakan tinggi semua gambar agar grid rapi */
-    object-fit: cover; /* Memastikan gambar tidak gepeng dan mengisi ruang */
+    height: 300px;
+    object-fit: cover;
     display: block;
-    transition: transform 0.4s ease, filter 0.4s ease;
+    border-radius: 12px; /* Pastikan gambar punya border-radius juga */
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.photo-item:hover {
+    z-index: 10; /* Membawa foto yang di-hover ke depan */
+    transform: scale(1.1); /* Memperbesar seluruh item */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Memberi bayangan agar menonjol */
+    /* Opsional: Sesuaikan posisi agar zoom lebih terlihat di tengah area */
+    /* Misalnya, transform: scale(1.1) translateY(-10px); */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0s; /* Hapus delay z-index saat hover */
 }
 
 .photo-item:hover img {
-    transform: scale(1.05); /* Sedikit zoom saat disentuh mouse */
-    filter: brightness(0.9); /* Sedikit meredupkan gambar lain */
+    /* filter: brightness(0.9); Ini bisa dihapus jika tidak lagi diinginkan */
+    transform: none; /* Reset transform img jika sebelumnya ada (dari .photo-item) */
 }
-
-
-/* === RESPONSIVE DESIGN === */
-/* ... (kode responsive Anda) ... */
 /* === FOOTER === */
 #Contact {
     background: none;
