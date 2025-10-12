@@ -1,269 +1,258 @@
-* {
+/* Import Google Fonts */
+
+
+/* === VARIABLES & GLOBAL STYLES === */
+:root {
+    --background-color: #f9f9f9;
+    --text-color: #1a1a1a;
+    --primary-accent-color: #007bff; /* Biru cerah sebagai aksen */
+    --secondary-text-color: #555555;
+    --border-color: #e5e5e5;
+
+    --font-primary: 'Inter', sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
     text-decoration: none;
-    margin: 0px;
-    padding: 0px;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    margin: 0px;
-    padding: 0px;
-    font-family: 'Open Sans',sans-serif;
+    font-family: var(--font-primary);
+    color: var(--text-color);
+    background-color: var(--background-color);
+    line-height: 1.7;
 }
+
 .wrapper {
-    width: 1000px;
+    width: 900px; /* Layout lebih sempit untuk fokus pada konten */
+    max-width: 90%;
     margin: auto;
     position: relative;
 }
 
-.logo a {
-    font-size: 50px;
+/* === TYPOGRAPHY === */
+h2, h3, h4 {
+    font-family: var(--font-primary);
     font-weight: 800;
-    float: left;
-    font-family: Courier;
-    color: #16213E;
-}
-
-.menu {
-    float: right;
-}
-
-nav {
-    width: 100%;
-    margin: auto;
-    display: flex;
-    line-height: 80px;
-    position: sticky;
-    position: -webkit-sticky;
-    top: 0;
-    background: #FFFFFF;
-    z-index: 1;
-    border-bottom: 1px solid #16213E;
-}
-
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-nav ul li {
-    float: left;
-}
-
-nav ul li a {
-    color: #0F3460;
-    font-weight: bold;
-    text-align: center;
-    padding: 0px 16px 0px 16px;
-    text-decoration: none;
-}
-
-nav ul li a:hover {
-    text-decoration:  underline;
-}
-section { 
-    margin: auto;
-    display: flex;
-    margin-bottom: 50px;
-}
-
-img {
-    margin: auto;
-    width: 50%;
-}
-
-.kolom {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    margin-left: 20px;
-}
-
-.kolom .deskripsi { 
-    font-size: 20px;
-    font-weight: bold;
-    font-family: 'comic sans ms';
-    color: #16213E;
+    color: var(--text-color);
+    line-height: 1.2;
 }
 
 h2 {
-    font-family : 'comic sans ms';
-    font-weight: 800;
-    font-size: 45px;
-    margin-bottom: 20px;
-    color: #16213E;
-    width: 100%;
-    line-height: 50px;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
 }
 
-a.tbl-biru {
-    background: #533483 ;
-    border-radius: 20px;
-    margin-top: 20px;
-    padding: 15px 20px 15px 20px;
-    color:  #FFFFFF;
-    cursor: pointer;
-    font-weight: bold;
+h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
 }
 
-a.tbl-biru:hover {
-    background: #E94560;
-    text-decoration: none;
-}
-
-a.tbl-pink {
-    background: #E94560 ;
-    border-radius: 20px;
-    margin-top: 20px;
-    padding: 15px 20px 15px 20px;
-    color:  #FFFFFF;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-a.tbl-pink:hover {
-    background: #533483;
-    text-decoration: none;
+h4 {
+    font-size: 1.1rem;
+    color: var(--secondary-text-color);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
 }
 
 p {
-    margin: 10px 0px 10px 0px;
-    padding: 10px 0px 10px 0px;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: var(--secondary-text-color);
 }
 
-.tengah {
-    text-align: center;
-    width: 100%;
+.deskripsi {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--primary-accent-color);
+    margin-bottom: 0.5rem;
 }
 
-.tutor-list {
+/* === NAVIGATION === */
+nav {
     width: 100%;
-    position: relative;
+    padding: 25px 5%;
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--background-color);
+    border-bottom: 1px solid var(--border-color);
 }
 
-.kartu-tutor {
-    width: 20%;
-    margin: 0 auto;
-}
-
-.kartu-tutor img {
-    width: 80%;
-    border-radius: 50%;
-}
-
-.kartu-tutor p {
-    font-family: 'comic sans ms';
+.logo a {
+    font-size: 1.5rem;
     font-weight: 800;
-    font-size: 25px;
-    text-align: center;
-    color: #16213E;
+    color: var(--text-color);
 }
 
-.partner-list {
-    width: 100%;
-    position: relative;
+nav .menu ul {
+    list-style-type: none;
     display: flex;
-    flex-wrap: wrap;
+    gap: 25px;
 }
 
-.kartu-partner {
-    width: 20%;
-    margin: 0 auto;
+nav .menu ul li a {
+    color: var(--secondary-text-color);
+    font-weight: 700;
+    font-size: 1rem;
+    transition: color 0.3s ease;
 }
 
-.kartu-partner img {
-    width: 150px;
+nav .menu ul li a:hover {
+    color: var(--text-color);
+}
+
+/* === SECTIONS === */
+section {
+    display: block; /* Menghilangkan flexbox agar konten mengalir ke bawah */
+    padding: 80px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#Home {
+    text-align: center;
+}
+
+#Home img {
+    width: 150px; /* Foto profil lebih kecil dan elegan */
+    height: 150px;
     border-radius: 50%;
+    margin-bottom: 2rem;
 }
 
+#About {
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
+}
+
+#About .kolom {
+    flex-basis: 100%;
+}
+
+/* === BUTTONS === */
+.tbl-pink, .tbl-biru {
+    display: inline-block;
+    background-color: var(--primary-accent-color);
+    color: #FFFFFF;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.tbl-pink:hover, .tbl-biru:hover {
+    background-color: #0056b3; /* Warna biru lebih gelap saat hover */
+    transform: translateY(-3px);
+    text-decoration: none;
+}
+
+/* === SKILLS SECTION === */
+.skill-categories-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    text-align: left;
+}
+
+.skill-category {
+    background: #FFFFFF;
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.skill-category ul {
+    list-style: none;
+}
+
+.skill-category ul li {
+    margin-bottom: 0.8rem;
+    color: var(--secondary-text-color);
+}
+
+/* === PROJECTS SECTION === */
+.project-list {
+    display: grid;
+    gap: 2rem;
+}
+
+.kartu-project {
+    background: #FFFFFF;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: box-shadow 0.3s ease;
+}
+
+.kartu-project:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+}
+
+.kartu-project img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.kartu-project p {
+    font-size: 1rem;
+}
+
+/* === FOOTER === */
 #Contact {
-    background: #97D2EC;
-    padding: 50px 0px 50px 0px;
+    background: none;
+    text-align: center;
+    padding: 80px 0;
 }
 
 .footer {
-    width: 100%;
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    margin: auto;
+    display: block; /* Menghilangkan flexbox */
 }
 
 .footer-section {
-    width: 20%;
-    margin: 0 auto;
+    margin-bottom: 2rem;
 }
 
-.footer-section p a img{
-    width: 30%;
+.footer-section h3 {
+    font-size: 1.2rem;
 }
 
+.footer-section p, .footer-section a {
+    color: var(--secondary-text-color);
+}
 
-
-
-
-h3 {
-    font-family: 'comic sans ms';
-    font-weight: 800;
-    font-size: 30px;
-    margin-bottom: 20px;
-    color: #0F3460;
-    width: 100%;
-    line-height: 50px;
-
+.footer-section a:hover {
+    color: var(--text-color);
 }
 
 #Copyright {
     text-align: center;
-    width: 100%;
-    padding: 20px 0px 20px 0px;
-    margin-top:  10px;
+    padding: 20px 0;
+    color: var(--secondary-text-color);
+    font-size: 0.9rem;
 }
 
-@media screen and (max-width: 991.98px) {
-    .wrapper {
-        width: 90%;
-    }
+/* === RESPONSIVE DESIGN === */
 
-    .logo a {
-        display: block;
-        width: 100%;
-        text-align: center;
-    }
-
-    nav .menu {
-        width: 100%;
-        margin: 0;
-    }
-
-    nav .menu ul {
-        text-align: center;
-        margin: auto;
-        line-height: 60px;
-    }
-
-    nav .menu ul li {
-        display: inline-block;
-        float: none;
-    }
-
-    section {
-        display: block;
-    }
-
-    section img {
-        display: block;
-        width: 100%;
+@media screen and (max-width: 768px) {
+    h2 { font-size: 1.8rem; } /* Sedikit lebih kecil di mobile */
+    p { font-size: 1rem; } /* Sedikit lebih kecil di mobile */
+    #About { flex-direction: column; }
+    nav {
+        flex-direction: column;
         height: auto;
+        gap: 1rem;
+        padding: 20px 5%;
     }
-
-    .kartu-tutor {
-        width: 50%;
-    }
-
-    .kartu-partner {
-        width: 50%;
-    }
-    
 }
