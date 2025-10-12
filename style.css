@@ -201,6 +201,39 @@ section {
     font-size: 1rem;
 }
 
+
+/* === PHOTOGRAPHY SECTION === */
+.photo-grid {
+    display: grid;
+    /* Membuat 3 kolom di layar lebar, dan 2 kolom di layar yang lebih kecil */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem; /* Jarak antar foto */
+    margin-top: 40px;
+}
+
+.photo-item {
+    display: block;
+    overflow: hidden; /* Penting untuk efek zoom */
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.photo-item img {
+    width: 100%;
+    height: 300px; /* Samakan tinggi semua gambar agar grid rapi */
+    object-fit: cover; /* Memastikan gambar tidak gepeng dan mengisi ruang */
+    display: block;
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.photo-item:hover img {
+    transform: scale(1.05); /* Sedikit zoom saat disentuh mouse */
+    filter: brightness(0.9); /* Sedikit meredupkan gambar lain */
+}
+
+
+/* === RESPONSIVE DESIGN === */
+/* ... (kode responsive Anda) ... */
 /* === FOOTER === */
 #Contact {
     background: none;
