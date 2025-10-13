@@ -125,7 +125,7 @@ section {
 #Home img {
     width: 120px; /* Foto profil lebih kecil dan subtil */
     height: 120px;
-    border-radius: 80%;
+    border-radius: 90%;
     margin-bottom: 2rem;
 }
 
@@ -259,7 +259,7 @@ section {
 }
 
 .footer-section {
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
 }
 .footer-section h3 {
     font-size: 1.2rem;
