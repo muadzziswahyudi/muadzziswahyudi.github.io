@@ -125,8 +125,9 @@ section {
 #Home img {
     width: 120px; /* Foto profil lebih kecil dan subtil */
     height: 120px;
-    border-radius: 90%;
-    margin-bottom: 2rem;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
 }
 
 /* === BUTTONS === */
