@@ -1,37 +1,50 @@
-// Menjalankan skrip setelah semua konten HTML dimuat
 document.addEventListener("DOMContentLoaded", function() {
     
-    // Memilih SEMUA image switcher yang ada di halaman
     const switchers = document.querySelectorAll('.project-image-switcher');
     
-    // Menjalankan fungsi setup untuk setiap switcher
     switchers.forEach(switcher => {
         const images = switcher.querySelectorAll('.switcher-img');
         const prevBtn = switcher.querySelector('.switcher-btn.prev');
         const nextBtn = switcher.querySelector('.switcher-btn.next');
         
-        // Jika tidak ada gambar, hentikan fungsi
         if (images.length === 0) return; 
 
-        let currentIndex = 0; // Melacak gambar yang sedang aktif
+        let currentIndex = 0;
         const totalImages = images.length;
         
-        // Fungsi untuk menampilkan gambar berdasarkan index
+        // --- FUNGSI BARU YANG LEBIH CANGGIH ---
         function showImage(index) {
-            // 1. Sembunyikan semua gambar di dalam switcher INI
+            // Dapatkan gambar yang akan aktif
+            const activeImage = images[index];
+            
+            // 1. Dapatkan rasio aspek asli dari gambar
+            // (tinggi / lebar)
+            const aspectRatio = activeImage.naturalHeight / activeImage.naturalWidth;
+            
+            // 2. Dapatkan lebar kontainer saat ini
+            const containerWidth = switcher.clientWidth;
+            
+            // 3. Hitung tinggi baru yang ideal berdasarkan rasio
+            const newHeight = containerWidth * aspectRatio;
+            
+            // 4. Terapkan tinggi baru ke bingkai (kontainer)
+            // CSS 'transition' akan menganimasikan perubahan ini
+            switcher.style.height = newHeight + 'px';
+            
+            // 5. Sembunyikan semua gambar
             images.forEach(img => {
                 img.classList.remove('active');
             });
             
-            // 2. Tampilkan gambar yang dipilih
-            images[index].classList.add('active');
+            // 6. Tampilkan gambar yang dipilih
+            activeImage.classList.add('active');
         }
         
         // Event listener untuk tombol NEXT
         nextBtn.addEventListener('click', function() {
             currentIndex++;
             if (currentIndex >= totalImages) {
-                currentIndex = 0; // Kembali ke gambar pertama
+                currentIndex = 0;
             }
             showImage(currentIndex);
         });
@@ -40,13 +53,24 @@ document.addEventListener("DOMContentLoaded", function() {
         prevBtn.addEventListener('click', function() {
             currentIndex--;
             if (currentIndex < 0) {
-                currentIndex = totalImages - 1; // Pergi ke gambar terakhir
+                currentIndex = totalImages - 1;
             }
             showImage(currentIndex);
         });
         
-        // Tampilkan gambar pertama saat halaman dimuat
-        showImage(currentIndex);
+        // --- INISIALISASI SAAT HALAMAN DIMUAT ---
+        // Kita harus memastikan gambar pertama sudah dimuat sebelum kita
+        // mengukur rasionya.
+        const firstImage = images[0];
+        if (firstImage.complete) {
+            // Jika gambar sudah ada di cache browser
+            showImage(currentIndex);
+        } else {
+            // Jika belum, tunggu gambar dimuat, baru jalankan
+            firstImage.addEventListener('load', function() {
+                showImage(currentIndex);
+            });
+        }
     });
 
 });
