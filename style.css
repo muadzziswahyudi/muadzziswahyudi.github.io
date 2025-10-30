@@ -176,6 +176,14 @@ section {
     color: var(--secondary-text-color);
 }
 #Project
+.project-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    
+    /* 👇 TAMBAHKAN BARIS INI 👇 */
+    align-items: start; 
+}
 .kartu-project {
     border: 1px solid var(--border-color);
     border-radius: 12px;
