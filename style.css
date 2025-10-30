@@ -175,7 +175,7 @@ section {
     margin-bottom: 0.8rem;
     color: var(--secondary-text-color);
 }
-#Project
+
 .project-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
