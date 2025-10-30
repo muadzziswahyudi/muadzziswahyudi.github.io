@@ -209,7 +209,7 @@ section {
     border-radius: 8px;
     margin-bottom: 1rem;
     /* Memberi bingkai rasio 16:10, bisa disesuaikan */
-    aspect-ratio: 16 / 10; 
+    aspect-ratio: 9 / 16; 
     background-color: #f0f0f0; /* Latar belakang placeholder */
 }
 
