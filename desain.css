@@ -291,10 +291,10 @@ section {
 .switcher-btn.next { right: 10px; }
 /* === PHOTOGRAPHY SECTION (REFINED STYLE) === */
 #PHOTOGRAPHY
-.photo-grid {
+.Photography, .photo-grid {
     display: grid;
     /* Menggunakan 250px agar di laptop bisa tampil 3-4 kolom dengan lega */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1.5rem;
     margin-top: 40px;
 }
