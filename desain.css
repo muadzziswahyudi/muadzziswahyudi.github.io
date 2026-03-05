@@ -154,8 +154,8 @@ section {
 .tengah {
     text-align: center;
 }
-#Skill
-.skill-categories-container {
+#Skills
+.Skills, .skill-categories-container {
     display: grid;
     /* TAMBAHKAN BARIS DI BAWAH INI */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
