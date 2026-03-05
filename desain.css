@@ -75,15 +75,17 @@ p {
 }
 
 /* === NAVIGATION === */
+/* === NAVIGATION UPGRADED === */
 nav {
+    position: sticky; /* Membuat navigasi menempel */
+    top: 0;
+    z-index: 9999;
     width: 100%;
-    padding: 25px 0;
-    margin-bottom: 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: var(--background-color);
+    padding: 15px 0; /* Sedikit lebih tipis saat melayang */
+    background: rgba(255, 255, 255, 0.95); /* Putih transparan */
+    backdrop-filter: blur(10px); /* Efek blur kaca modern */
     border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Bayangan halus agar terlihat melayang */
 }
 
 .logo a {
@@ -183,24 +185,40 @@ section {
 #Project
 .project-list {
     display: grid;
-    /* Ubah 350px menjadi 300px agar lebih muat banyak kolom di laptop */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-    gap: 2rem;
-    align-items: start;
-    margin-top: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsif */
+    gap: 2.5rem;
+    margin-top: 50px;
+    align-items: stretch;
 }
+
 .kartu-project {
+    background: #fff;
     border: 1px solid var(--border-color);
-    border-radius: 12px;
-    transition: background-color 0.3s ease;
+    border-radius: 16px;
+    overflow: hidden;
+    text-align: left; /* Rata kiri agar rapi */
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
-.kartu-project a {
-    display: block;
-    padding: 2rem;
-    color: inherit;
-}
+
 .kartu-project:hover {
-    background-color: #f5f5f5;
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.project-info {
+    padding: 1.5rem;
+    flex-grow: 1;
+}
+
+/* --- 4. Tombol Detail di dalam Kartu --- */
+.btn-view {
+    color: var(--primary-accent-color);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    text-decoration: none;
 }
 
 .kartu-project img {
@@ -218,35 +236,27 @@ section {
 
 .project-image-switcher {
     width: 100%;
-    min-height: 250px;
-    position: relative;
+    position: relative; /* Wajib agar elemen absolute di dalamnya (switcher-img) bisa diposisikan */
     overflow: hidden;
-    border-radius: 12px;
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* Memberi bingkai rasio 16:10, bisa disesuaikan */
-    transition: height 0.4s ease-in-out;
-    background-color: #f0f0f0; /* Latar belakang placeholder */
+    border-radius: 12px 12px 0 0; /* Melengkung hanya di bagian atas kartu */
+    background-color: #f4f4f4;
+    /* Jangan gunakan 'height' kaku, biarkan script.js yang menentukan */
+    min-height: 200px; 
+    transition: height 0.4s ease-in-out; /* Animasi smooth saat script mengubah tinggi */
 }
 
 .switcher-img {
-    position: absolute; /* Menumpuk semua gambar di satu tempat */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Memastikan gambar tetap penuh di dalam bingkai */
+    position: absolute;
     top: 0;
     left: 0;
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    
-    /* Sembunyikan semua gambar secara default */
     opacity: 0;
     visibility: hidden;
-    /* Transisi fade yang halus */
-    transition: opacity 0.4s ease-in-out;
+    transition: opacity 0.4s ease;
 }
 
-/* Kelas 'active' ini akan ditambahkan oleh JavaScript */
 .switcher-img.active {
     opacity: 1;
     visibility: visible;
