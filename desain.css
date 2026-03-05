@@ -288,52 +288,66 @@ section {
 }
 .switcher-btn.prev { left: 10px; }
 .switcher-btn.next { right: 10px; }
-#Photo
-/* === PHOTOGRAPHY SECTION === */
+/* === PHOTOGRAPHY SECTION (REFINED STYLE) === */
 .photo-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(1000px, 1fr));
+    /* Menggunakan 250px agar di laptop bisa tampil 3-4 kolom dengan lega */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1.5rem;
     margin-top: 40px;
-    align-items: start;
-    
 }
 
 .photo-item {
     display: block;
-    /* Membuat setiap bingkai foto memiliki rasio aspek potret 4:5 */
-    aspect-ratio: 4 / 5; 
-    overflow: hidden; /* Penting untuk memotong gambar awal */
+    aspect-ratio: 1 / 1; /* Gunakan kotak 1:1 agar terlihat simetris dan rapi seperti galeri profesional */
+    overflow: hidden;
     border-radius: 12px;
     border: 1px solid var(--border-color);
-    position: relative; /* Diperlukan agar z-index berfungsi */
+    position: relative;
+    background-color: #f8f9fa;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     z-index: 1;
-    transition: transform 0.4s ease, box-shadow 0.4s ease, z-index 0s 0.4s;
 }
 
 .photo-item:hover {
-    z-index: 10; /* Membawa bingkai ke depan saat di-hover */
-    transform: scale(1.25); /* Memperbesar bingkai sebesar 25% */
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-    border-color: #fff; /* Sembunyikan border saat zoom */
-    transition: transform 0.4s ease, box-shadow 0.4s ease, z-index 0s;
+    /* Hover dibuat lebih halus, tidak menutupi menu navigasi melayang */
+    transform: translateY(-8px); 
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    z-index: 2;
+    border-color: var(--primary-accent-color);
 }
 
 .photo-item img {
     width: 100%;
     height: 100%;
-    /* Awalnya, paksa gambar untuk mengisi bingkai dan terpotong */
-    object-fit: cover; 
+    object-fit: cover; /* Foto tetap memenuhi kotak tanpa gepeng */
     display: block;
-    /* Transisi halus untuk perubahan object-fit dan filter */
-    transition: object-fit 0.4s ease, filter 0.4s ease, transform 0.4s ease;
+    transition: transform 0.6s ease;
 }
 
 .photo-item:hover img {
-    /* Saat di-hover, ubah aturan agar gambar muat di dalam bingkai tanpa terpotong */
-    object-fit: contain;
-    background-color: rgba(0, 0, 0, 0.1); /* Latar belakang subtil saat zoom */
-    transform: scale(1.05); /* Sedikit zoom tambahan di dalam bingkai */
+    transform: scale(1.1); /* Zoom halus ke dalam, bukan keluar bingkai */
+}
+
+/* Overlay teks tipis saat di-hover (Opsional, untuk kesan premium) */
+.photo-item::after {
+    content: "View Photo";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.photo-item:hover::after {
+    opacity: 1;
 }
 /* === FOOTER === */
 #Contact {
