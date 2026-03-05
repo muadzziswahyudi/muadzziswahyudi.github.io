@@ -171,6 +171,9 @@ section {
 
 .skill-category ul {
     list-style: none;
+    display: block;
+    padding: 2rem;
+    color: inherit;
 }
 
 .skill-category ul li {
