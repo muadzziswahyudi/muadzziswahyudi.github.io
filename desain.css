@@ -290,7 +290,7 @@ section {
 .switcher-btn.prev { left: 10px; }
 .switcher-btn.next { right: 10px; }
 /* === PHOTOGRAPHY SECTION (REFINED STYLE) === */
-#PHOTOGRAPHY
+#Photography
 .Photography, .photo-grid {
     display: grid;
     /* Menggunakan 250px agar di laptop bisa tampil 3-4 kolom dengan lega */
